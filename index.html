@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎮 Giang's Life Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', -apple-system, sans-serif; 
+            background: #0f0f23; 
+            color: #eaeaea;
+            padding: 20px;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        .header { 
+            text-align: center; 
+            padding: 40px 20px; 
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(233, 69, 96, 0.3);
+        }
+        h1 { 
+            font-size: 2.2rem; 
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #fff, #e94560);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+        .subtitle { color: #a0a0a0; font-size: 1rem; margin-top: 5px; }
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .card { 
+            background: linear-gradient(180deg, #16213e 0%, #1a1a2e 100%);
+            border-radius: 20px; 
+            padding: 25px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover { 
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px; }
+        .card-icon { font-size: 2rem; }
+        .card-title h2 { font-size: 1.3rem; margin-bottom: 5px; }
+        .card-title span { color: #a0a0a0; font-size: 0.85rem; }
+        .level { font-size: 1.8rem; font-weight: 800; }
+        .xp-section { margin: 15px 0; }
+        .xp-info { display: flex; justify-content: space-between; font-size: 0.85rem; color: #a0a0a0; margin-bottom: 8px; }
+        .xp-bar { 
+            height: 12px; 
+            background: #2d2d44; 
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .xp-fill { 
+            height: 100%; 
+            border-radius: 10px;
+            transition: width 1s ease;
+        }
+        .stats { margin-top: 15px; padding: 15px; background: rgba(0,0,0,0.2); border-radius: 12px; }
+        .stat-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.9rem; }
+        .stat-row:last-child { margin-bottom: 0; }
+        .footer { text-align: center; color: #a0a0a0; margin-top: 40px; padding: 20px; font-size: 0.85rem; }
+        .overall { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 20px; }
+        .overall-stat { text-align: center; }
+        .overall-stat .value { font-size: 2rem; font-weight: 800; color: #e94560; }
+        .overall-stat .label { font-size: 0.8rem; color: #a0a0a0; text-transform: uppercase; letter-spacing: 1px; }
+        .tough { --accent: #ff6b6b; }
+        .nomu { --accent: #4ade80; }
+        .export { --accent: #60a5fa; }
+        .hyrox { --accent: #fbbf24; }
+        .finance { --accent: #a78bfa; }
+        .personal { --accent: #f472b6; }
+        .card-title h2, .level { color: var(--accent); }
+        .xp-fill { background: linear-gradient(90deg, var(--accent), #fff5); }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🎮 Giang's Life Dashboard</h1>
+        <p class="subtitle">Level up your life, one day at a time</p>
+        <div class="overall">
+            <div class="overall-stat">
+                <div class="value">12</div>
+                <div class="label">Overall Level</div>
+            </div>
+            <div class="overall-stat">
+                <div class="value">2,450</div>
+                <div class="label">Total XP</div>
+            </div>
+            <div class="overall-stat">
+                <div class="value">3</div>
+                <div class="label">Active Quests</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid">
+        <div class="card tough">
+            <div class="card-header">
+                <span class="card-icon">💼</span>
+                <div class="card-title">
+                    <h2>Tough Cookie</h2>
+                    <span>Video-Agentur</span>
+                </div>
+                <span class="level">Lvl 15</span>
+            </div>
+            <div class="xp-section">
+                <div class="xp-info">
+                    <span>XP: 1,250 / 2,000</span>
+                    <span>62%</span>
+                </div>
+                <div class="xp-bar">
+                    <div class="xp-fill" style="width: 62%"></div>
+                </div>
+            </div>
+            <div class="stats">
+                <div class="stat-row">
+                    <span>💰 Offene Rechnungen:</span>
+                    <span style="color: #ff6b6b; font-weight: 600;">~9.000 €</span>
+                </div>
+                <div class="stat-row">
+                    <span>📊 Monatlicher Umsatz:</span>
+                    <span style="color: #4ade80; font-weight: 600;">~8.000 €</span>
+                </div>
+                <div class="stat-row">
+                    <span>🎯 Aktive Projekte:</span>
+                    <span style="color: #60a5fa; font-weight: 600;">6</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card nomu">
+            <div class="card-header">
+                <span class="card-icon">📱</span>
+                <div class="card-title">
+                    <h2>NOMU</h2>
+                    <span>Digitale Speisekarte</span>
+                </div>
+                <span class="level">Lvl 8</span>
+            </div>
+            <div class="xp-section">
+                <div class="xp-info">
+                    <span>XP: 480 / 1,000</span>
+                    <span>48%</span>
+                </div>
+                <div class="xp-bar">
+                    <div class="xp-fill" style="width: 48%"></div>
+                </div>
+            </div>
+            <div class="stats">
+                <div class="stat-row">
+                    <span>👥 Aktive Nutzer:</span>
+                    <span style="color: #4ade80; font-weight: 600;">2</span>
+                </div>
+                <div class="stat-row">
+                    <span>💳 Preis:</span>
+                    <span style="color: #4ade80; font-weight: 600;">15-25€/mo</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card export">
+            <div class="card-header">
+                <span class="card-icon">🌍</span>
+                <div class="card-title">
+                    <h2>Export</h2>
+                    <span>Deutschland → Vietnam</span>
+                </div>
+                <span class="level">Lvl 6</span>
+            </div>
+            <div class="xp-section">
+                <div class="xp-info">
+                    <span>XP: 320 / 800</span>
+                    <span>40%</span>
+                </div>
+                <div class="xp-bar">
+                    <div class="xp-fill" style="width: 40%"></div>
+                </div>
+            </div>
+            <div class="stats">
+                <div class="stat-row">
+                    <span>📦 Aktive Deals:</span>
+                    <span style="color: #60a5fa; font-weight: 600;">1 (Kyberg)</span>
+                </div>
+                <div class="stat-row">
+                    <span>🌐 Kontakt:</span>
+                    <span style="color: #60a5fa; font-weight: 600;">Onkel wartet</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card hyrox">
+            <div class="card-header">
+                <span class="card-icon">🏃</span>
+                <div class="card-title">
+                    <h2>HYROX</h2>
+                    <span>Personal Training</span>
+                </div>
+                <span class="level">Lvl 18</span>
+            </div>
+            <div class="xp-section">
+                <div class="xp-info">
+                    <span>XP: 1,800 / 2,500</span>
+                    <span>72%</span>
+                </div>
+                <div class="xp-bar">
+                    <div class="xp-fill" style="width: 72%"></div>
+                </div>
+            </div>
+            <div class="stats">
+                <div class="stat-row">
+                    <span>🔥 Training-Streak:</span>
+                    <span style="color: #fbbf24; font-weight: 600;">12 Tage</span>
+                </div>
+                <div class="stat-row">
+                    <span>🎯 Zielzeit:</span>
+                    <span style="color: #fbbf24; font-weight: 600;">1:20</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card finance">
+            <div class="card-header">
+                <span class="card-icon">💰</span>
+                <div class="card-title">
+                    <h2>Finanzen</h2>
+                    <span>Einkommen & Cashflow</span>
+                </div>
+                <span class="level">Lvl 10</span>
+            </div>
+            <div class="xp-section">
+                <div class="xp-info">
+                    <span>XP: 850 / 1,500</span>
+                    <span>56%</span>
+                </div>
+                <div class="xp-bar">
+                    <div class="xp-fill" style="width: 56%"></div>
+                </div>
+            </div>
+            <div class="stats">
+                <div class="stat-row">
+                    <span>💶 Netto-Einkommen:</span>
+                    <span style="color: #a78bfa; font-weight: 600;">1.200 €</span>
+                </div>
+                <div class="stat-row">
+                    <span>📈 Ziel:</span>
+                    <span style="color: #a78bfa; font-weight: 600;">2.000 €</span>
+                </div>
+                <div class="stat-row">
+                    <span>🏁 Meilenstein:</span>
+                    <span style="color: #4ade80; font-weight: 600;">Juli 2026: Schuld-frei</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card personal">
+            <div class="card-header">
+                <span class="card-icon">🎯</span>
+                <div class="card-title">
+                    <h2>Personal Brand</h2>
+                    <span>Content & Skills</span>
+                </div>
+                <span class="level">Lvl 5</span>
+            </div>
+            <div class="xp-section">
+                <div class="xp-info">
+                    <span>XP: 250 / 700</span>
+                    <span>35%</span>
+                </div>
+                <div class="xp-bar">
+                    <div class="xp-fill" style="width: 35%"></div>
+                </div>
+            </div>
+            <div class="stats">
+                <div class="stat-row">
+                    <span>🎬 Golf Spec:</span>
+                    <span style="color: #f472b6; font-weight: 600;">In Entwicklung</span>
+                </div>
+                <div class="stat-row">
+                    <span>📱 LinkedIn:</span>
+                    <span style="color: #f472b6; font-weight: 600;">Noch nicht aktiv</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>🔄 Letzte Aktualisierung: 9. April 2026</p>
+        <p>🤖 Auto-Update: Täglich nach Abend-Review</p>
+    </div>
+</body>
+</html>
